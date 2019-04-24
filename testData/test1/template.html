@@ -1,0 +1,44 @@
+<div
+    class="calendar"
+    :class="{'calendar_with-select': showPresetsSelect}"
+>
+    <vselecter2
+        v-if="showPresetsSelect"
+        class="calendar__presets_select"
+        :list="calendarPresets"
+        :empty-message="`«:value» - не найдено`"
+        :to-top-condition-selector="'.rightform'"
+        show-desc
+        placeholder="Интервал"
+        @changed="calendarPresetChanged($event)"
+        @clear-select="calendarPresetChanged('all_time')"
+    />
+    <div class="ini_calendar"/>
+    <div v-if="showPresets" class="presets">
+        <div
+            v-for="calendarPreset in calendarPresets"
+            v-text="calendarPreset.name"
+            :key="calendarPreset.id"
+            class="preset"
+            @click="preset(calendarPreset.id)"
+        />
+    </div>
+    <div v-if="showTimePicker" class="timepicker">
+        <vue-scroll>
+            <div class="timepicker__item" v-for="time in times">
+                <div
+                    :class="{'timepicker__item--active': time[0]===toHHmm(sd)}"
+                    @click="setTime(time[0])"
+                >
+                    {{time[0]}}
+                </div>
+                <div
+                    :class="{'timepicker__item--active': time[1]===toHHmm(sd)}"
+                    @click="setTime(time[1])"
+                >
+                    {{time[1]}}
+                </div>
+            </div>
+        </vue-scroll>
+    </div>
+</div>

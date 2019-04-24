@@ -1,0 +1,219 @@
+$color_calendar_selected: #f5f5f6;
+$color_calendar_marked: $link-color;
+$color_month: #181c20;
+$color_week_day: #727d85;
+
+.pickmeup {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+
+    .pmu-days {
+        display: flex;
+        flex-wrap: wrap;
+
+        .pmu-button {
+            align-items: center;
+            display: flex;
+            height: 34px;
+            justify-content: center;
+            margin-bottom: 3px;
+            min-width: 14.28%;
+            width: 34px;
+
+            &.pmu-today {
+                background-color: transparent;
+            }
+
+            &.pmu-selected {
+                background-color: $color_calendar_selected;
+                border-radius: 3px;
+            }
+
+            &:hover,
+            &.marked_date {
+                background-color: $color_calendar_marked;
+                border-radius: 3px;
+                color: $white;
+            }
+        }
+    }
+
+    .pmu-years,
+    .pmu-months {
+        display: flex;
+        flex-wrap: wrap;
+
+        .pmu-button {
+            align-items: center;
+            display: flex;
+            height: 57px;
+            justify-content: center;
+            min-width: 25%;
+            width: 57px;
+
+            &.pmu-today {
+                background-color: $white;
+            }
+
+            &:hover,
+            &.pmu-selected {
+                background-color: $color_calendar_marked;
+                border-radius: 3px;
+                color: $white;
+            }
+        }
+    }
+
+    .pmu-month {
+        flex-grow: 1;
+
+        &.pmu-button {
+            color: $color_month;
+            font-size: 13px;
+            letter-spacing: .5px;
+            text-align: center;
+
+            &:hover {
+                color: $color_month;
+            }
+        }
+    }
+
+    .calendar-control {
+        background-image: url('/img/icons/btn_toggle.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        display: flex;
+        height: 13px;
+        left: -8px;
+        position: absolute;
+        top: 8px;
+        width: 26px;
+
+        &.calendar-control_prev {
+            transform: rotate(90deg);
+        }
+
+        &.calendar-control_next {
+            transform: rotate(-90deg);
+        }
+    }
+
+    .pmu-prev {
+        margin-left: 10px;
+        position: relative;
+    }
+
+    .pmu-next {
+        margin-right: 10px;
+        position: relative;
+    }
+
+    .pmu-instance {
+        height: auto;
+        padding: 0;
+        text-align: left;
+        width: 100%;
+
+        .pmu-button {
+            color: $primary-text-color;
+        }
+
+        .pmu-day-of-week {
+            color: $color_week_day;
+            font-size: 12px;
+            text-align: center;
+
+            & div {
+                align-items: center;
+                display: flex;
+                height: 34px;
+                justify-content: center;
+                min-width: 14.28%;
+            }
+        }
+    }
+}
+
+.pickmeup .pmu-instance .pmu-not-in-month {
+    visibility: hidden;
+}
+
+.calendar {
+    display: flex;
+
+    .ini_calendar {
+        width: 100%;
+    }
+
+    .pmu-button:not(.pmu-not-in-month) ~ .pmu-not-in-month {
+        display: none;
+    }
+
+    .presets {
+        border-left: 1px solid #eee;
+        margin-left: 20px;
+        margin-top: 10px;
+        padding-left: 20px;
+
+        .preset {
+            cursor: pointer;
+            margin-bottom: 20px;
+
+            &:hover {
+                color: #00d0f1;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .timepicker {
+        border-left: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+        margin-top: 35px;
+        max-height: 205px;
+        padding-left: 20px;
+
+        &__item {
+            color: $primary-text-color;
+            display: flex;
+            flex-shrink: 0;
+            font-size: 13px;
+            text-align: left;
+
+            &:first-child {
+                padding-top: 0;
+            }
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+
+            & > div {
+                cursor: pointer;
+                padding: 10px;
+
+                &:last-child {
+                    color: $light-grey;
+                }
+            }
+
+            &--active {
+                background-color: $link-color;
+                border-radius: 2px;
+                color: $white !important;
+            }
+        }
+    }
+
+    &.calendar_with-select {
+        flex-grow: 0;
+        flex-wrap: wrap;
+    }
+}

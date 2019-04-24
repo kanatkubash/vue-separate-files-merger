@@ -1,0 +1,16 @@
+{
+  "name": "vue-separate-files-merger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^11.13.7",
+    "acorn": "^6.1.1",
+    "lodash.property": "^4.4.2"
+  }
+}
